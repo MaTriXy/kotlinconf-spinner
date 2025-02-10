@@ -27,6 +27,8 @@ The entire application is implemented using [Kotlin/Native](https://github.com/J
 
 #### Android 
 
+You need to have ANDROID_HOME set to your Android SDK location.
+
 [Client side](https://github.com/JetBrains/kotlinconf-spinner/blob/master/kotlin-native/samples/fullstack/clients/android/src/main/kotlin/engine.kt) for Android is implemented in pure Kotlin/Native, as a Native Activity using:
 *   [GLES version 3](https://developer.android.com/guide/topics/graphics/opengl.html) interop for 3D rendering
 *   [NDK input handling](https://developer.android.com/ndk/reference/group___input.html) for input processing
@@ -49,3 +51,28 @@ The entire application is implemented using [Kotlin/Native](https://github.com/J
 *   HTTP server works in multithreaded mode, state sharing between sessions performed via SQLite DB access
 *   Android app is split into separate [loader](https://github.com/JetBrains/kotlinconf-spinner/blob/master/kotlin-native/samples/fullstack/clients/android/src/loader/kotlin/loader.kt) and application code, so that dynamic library (libopenal.so) included with application can be used on older Androids
 *   [WebAssembly frontend](https://github.com/JetBrains/kotlinconf-spinner/tree/master/kotlin-native/samples/fullstack/clients/webassembly) can fetch and render stats in the browser
+
+### Project Sources
+
+Use JDK1.8, for Android compatibility, i.e.:
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home
+
+To use microhttpd  (HTTP server) install it, i.e.:
+
+    port install libmicrohttpd
+    apt install libmicrohttpd-dev
+
+To use jansson (JSON library) install it, i.e.:
+
+    port install jansson
+    apt install libjansson-dev
+
+To use sqlite (embedded SQL server) install it:
+
+    port install sqlite3
+    apt install libsqlite3-dev
+
+To use curl (HTTP client) install it:
+
+    port install curl
+    apt install libcurl3-nss
